@@ -15,6 +15,7 @@
     {{-- <link rel="stylesheet" href="{{ asset('assets/css/select2.css') }}"> --}}
     {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/base.min.css"/> --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.5/css/selectize.bootstrap5.min.css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/2.5.3/css/bootstrap-colorpicker.min.css" rel="stylesheet">
     
     <script src="{{ asset('assets/js/sweetalert.js') }}"></script>
     <style>
@@ -146,6 +147,10 @@
     <script src="{{ asset('assets/js/moment.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.5/js/standalone/selectize.min.js"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/2.5.3/js/bootstrap-colorpicker.min.js"></script>
+    <script>
+        $('.colorpicker').colorpicker();
+    </script>
     <script>
         $(".select2").selectize();
         var $selectizeObj = $(".multi-select2").selectize({ maxItems: null });

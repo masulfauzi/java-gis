@@ -62,7 +62,19 @@
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
 
-      
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li>
+            <form method="POST" action="{{ route('logout') }}">
+              @csrf
+              <button class="dropdown-item" onclick="event.preventDefault();this.closest('form').submit();">
+                  Logout
+              </button>
+          </form>
+          </li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
 
     </div>
   </header><!-- End Header -->
