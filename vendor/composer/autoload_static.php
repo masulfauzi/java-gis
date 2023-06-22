@@ -187,8 +187,8 @@ class ComposerStaticInit7eaa809e17f2f6a62fbcf87d3b401125
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
-            1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
-            2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
         ),
         'Yajra\\DataTables\\' => 
         array (
@@ -348,8 +348,8 @@ class ComposerStaticInit7eaa809e17f2f6a62fbcf87d3b401125
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -559,6 +559,7 @@ class ComposerStaticInit7eaa809e17f2f6a62fbcf87d3b401125
         'App\\Http\\Requests\\Auth\\LoginRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Auth/LoginRequest.php',
         'App\\Http\\Requests\\StoreNewRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StoreNewRequest.php',
         'App\\Listeners\\LogSuccessfullLogin' => __DIR__ . '/../..' . '/app/Listeners/LogSuccessfullLogin.php',
+        'App\\Models\\Survey' => __DIR__ . '/../..' . '/app/Models/Survey.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Modules\\Config\\Controllers\\ConfigController' => __DIR__ . '/../..' . '/app/Modules/Config/Controllers/ConfigController.php',
         'App\\Modules\\Config\\Models\\Config' => __DIR__ . '/../..' . '/app/Modules/Config/Models/Config.php',
@@ -698,6 +699,7 @@ class ComposerStaticInit7eaa809e17f2f6a62fbcf87d3b401125
         'Cron\\HoursField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/HoursField.php',
         'Cron\\MinutesField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MinutesField.php',
         'Cron\\MonthField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MonthField.php',
+        'Database\\Factories\\SurveyFactory' => __DIR__ . '/../..' . '/database/factories/SurveyFactory.php',
         'Database\\Factories\\UserFactory' => __DIR__ . '/../..' . '/database/factories/UserFactory.php',
         'Database\\Seeders\\DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeders/DatabaseSeeder.php',
         'Database\\Seeders\\MenuTableSeeder' => __DIR__ . '/../..' . '/database/seeders/MenuTableSeeder.php',

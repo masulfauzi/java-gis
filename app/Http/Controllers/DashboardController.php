@@ -10,7 +10,16 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return view('dashboard');
+
+        if(session('active_role')['id'] == "e1a11b50-6827-45ed-b9e2-c93b29e05779")
+        {
+            return view('survey');
+        }
+        else
+        {
+            return view('dashboard');
+        }
+        
     }
 
     public function changeRole($id_role)

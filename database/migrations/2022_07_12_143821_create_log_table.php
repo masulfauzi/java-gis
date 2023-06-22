@@ -20,8 +20,8 @@ return new class extends Migration
             $table->text('aktivitas');
             $table->string('route', 36)->nullable();
             $table->string('action', 36)->nullable();
-            $table->json('context')->nullable();
-            $table->json('data')->nullable();
+            $table->text('context')->nullable();
+            $table->text('data')->nullable();
             $table->string('ip_address')->nullable();
             $table->string('user_agent')->nullable();
             $table->timestamps();
