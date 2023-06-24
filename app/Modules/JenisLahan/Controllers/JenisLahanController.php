@@ -62,7 +62,7 @@ class JenisLahanController extends Controller
 		$jenislahan = new JenisLahan();
 		$jenislahan->jenis_lahan = $request->input("jenis_lahan");
 		$jenislahan->warna = $request->input("warna");
-		$jenislahan->opacity = $request->input("opacity");
+		$jenislahan->opacity = $request->input("opacity")/100;
 		$jenislahan->keterangan = $request->input("keterangan");
 		
 		$jenislahan->created_by = Auth::id();

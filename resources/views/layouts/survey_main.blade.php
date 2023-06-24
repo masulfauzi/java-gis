@@ -62,7 +62,7 @@
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
 
-      <nav id="navbar" class="navbar order-last order-lg-0">
+      <nav id="navbar" class="navbar order-last">
         <ul>
           <li>
             <form method="POST" action="{{ route('logout') }}">

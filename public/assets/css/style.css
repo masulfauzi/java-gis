@@ -290,7 +290,7 @@ h6 {
   position: absolute;
   top: 55px;
   right: 15px;
-  bottom: 15px;
+  /* bottom: 15px; */
   left: 15px;
   padding: 10px 0;
   background-color: #fff;
