@@ -26,4 +26,19 @@ public function jenisLahan(){
 		return $this->belongsTo(JenisLahan::class,"id_jenis_lahan","id");
 	}
 
+	public static function update_properties($id)
+	{
+		$data = DB::table('survey')
+					->where('id', $id)
+					->first();
+
+		$geojson = json_decode($data->koordinat, true);
+		$geojson['properties']  = ['id' => $id];
+		$geojson = json_encode($geojson);
+	
+		DB::table('survey')
+			->where('id', $id)
+			->update(['koordinat' => $geojson]);
+	}
+
 }

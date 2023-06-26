@@ -99,9 +99,21 @@ class SurveyController extends Controller
 		$survey->created_by = Auth::id();
 		$survey->save();
 
+		$id_survey = $survey->id;;
+
+		Survey::update_properties($id_survey);
+
 		$text = 'membuat '.$this->title; //' baru '.$survey->what;
 		$this->log($request, $text, ['survey.id' => $survey->id]);
 		return redirect()->route('dashboard')->with('message_success', 'Survey berhasil ditambahkan!');
+	}
+
+	public function show_surveyor(Request $request, $id)
+	{
+		$data['data'] = Survey::find($id);
+
+		$this->log($request, 'melihat halaman manajemen data '.$this->title);
+		return view('Survey::survey_surveyor_show', array_merge($data, ['title' => $this->title]));
 	}
 
 	function store(Request $request)

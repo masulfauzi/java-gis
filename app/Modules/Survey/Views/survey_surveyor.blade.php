@@ -175,7 +175,7 @@
                         var featureId = feature.properties.id;
                         //tampilkan data
                         $.ajax({
-                            url: "detail.php?id=" + featureId,
+                            url: "{{ url('/surveyor') }}/" + featureId,
                             type: "GET",
                             dataType: "html",
                             success: function(html) {
@@ -184,7 +184,7 @@
                                 // document.getElementById('entity').value = shape_for_db;
                             }
                         });
-                        $('#empModal').modal('show'); 
+                        $('#exampleModal').modal('show'); 
                     });
                 }
             }).addTo(map);
