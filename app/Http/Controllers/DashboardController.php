@@ -13,7 +13,8 @@ class DashboardController extends Controller
 
         if(session('active_role')['id'] == "e1a11b50-6827-45ed-b9e2-c93b29e05779")
         {
-            return view('survey');
+            // return view('survey');
+            return redirect()->route('survey.surveyor.index');
         }
         else
         {

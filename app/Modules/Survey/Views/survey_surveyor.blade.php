@@ -147,8 +147,47 @@
                 
             });
 
-            @foreach()
+            @foreach($jenis_lahan as $item)
+                <?php
+                $no = 1;
+                    $data = $survey->where('id_jenis_lahan', $item->id);
+                ?>
+                var data{{ $no }} = [
+                    <?php
+                        foreach($data as $item_survey)
+                        {
+                            echo $item_survey['koordinat'];
+                            echo ",\n";
+                        }
+                    ?>
+                ];
 
+                var myStyle{{ $no }} = {
+                    "color": "{{ $item->warna }}",
+                    "weight": 1,
+                    "fillOpacity": {{ $item->opacity }}
+                };
+
+                L.geoJSON(data{{ $no }}, {
+                style: myStyle{{ $no }},
+                onEachFeature: function(feature, layer){
+                    layer.on('click', function(e) {
+                        var featureId = feature.properties.id;
+                        //tampilkan data
+                        $.ajax({
+                            url: "detail.php?id=" + featureId,
+                            type: "GET",
+                            dataType: "html",
+                            success: function(html) {
+                                $("#modal-body").html(html);
+                                // $("#geojson").val(shape_for_db);
+                                // document.getElementById('entity').value = shape_for_db;
+                            }
+                        });
+                        $('#empModal').modal('show'); 
+                    });
+                }
+            }).addTo(map);
 
             @endforeach
 
@@ -163,11 +202,11 @@
             //     ?>
             // ];
 
-            var myStyle = {
-                "color": "#ff7800",
-                "weight": 1,
-                "opacity": 0.65
-            };
+            // var myStyle = {
+            //     "color": "#ff7800",
+            //     "weight": 1,
+            //     "opacity": 0.65
+            // };
 
             // L.geoJSON(data, {
             //     style: myStyle,
