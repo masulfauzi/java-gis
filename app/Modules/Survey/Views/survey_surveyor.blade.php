@@ -160,6 +160,7 @@
                 var batas_adm_{{ $no }} = {!! $item_batas_adm->geojson !!}
                 var layer_adm_{{ $no }} = L.geoJSON(batas_adm_{{ $no }}).addTo(map);
 
+                <?php $no++; ?>
             @endforeach
 
             var batas_administrasi = {
@@ -167,7 +168,7 @@
                 @foreach($batas_adm as $item_batas_adm)
 
                     "{{ $item_batas_adm->nama }}" : layer_adm_{{ $no }},
-                    
+                <?php $no++; ?>
                 @endforeach
             }
 
