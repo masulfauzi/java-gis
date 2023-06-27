@@ -59,7 +59,21 @@
         $(document).ready(function(){
 
             L.DomEvent.on(document.getElementById('refreshButton'), 'click', function(){
-                map.locate({setView: true, maxZoom: 18});
+                // map.locate({setView: true, maxZoom: 18});
+
+                navigator.geolocation.getCurrentPosition(position => {
+                        console.log(position);
+                    const { coords: { latitude, longitude }} = position;
+                    var marker = new L.marker([latitude, longitude], {
+                        draggable: true,
+                        autoPan: true
+                    }).addTo(map);
+                    marker.bounce();
+
+                    map.setView([latitude, longitude], 13)
+
+                    console.log(marker);
+                    })
             })
 
             var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
