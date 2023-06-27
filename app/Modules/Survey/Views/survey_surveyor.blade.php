@@ -105,7 +105,24 @@
                 "Google Terrain": googleTerrain
             };
 
-            var layerControl = L.control.layers(baseMaps).addTo(map);
+            <?php $no = 1; ?>
+            @foreach($batas_adm as $item_batas_adm)
+
+                var batas_adm_{{ $no }} = {!! $item_batas_adm->geojson !!}
+                var layer_adm_{{ $no }} = L.geoJSON(batas_adm_{{ $no }}).addTo(map);
+
+            @endforeach
+
+            var batas_administrasi = {
+                <?php $no = 1; ?>
+                @foreach($batas_adm as $item_batas_adm)
+
+                    "{{ $item_batas_adm->nama }}" : layer_adm_{{ $no }},
+                    
+                @endforeach
+            }
+
+            var layerControl = L.control.layers(baseMaps, batas_administrasi).addTo(map);
 
             var drawnItems = new L.FeatureGroup();
             map.addLayer(drawnItems);
@@ -116,7 +133,10 @@
 
             
 
-            var myLayer = L.geoJSON().addTo(map);
+
+            
+
+            // var myLayer = L.geoJSON().addTo(map);
             // myLayer.addData(geojsonFeature);
 
             map.on('draw:created', function (e) {
@@ -169,65 +189,30 @@
                 };
 
                 L.geoJSON(data{{ $no }}, {
-                style: myStyle{{ $no }},
-                onEachFeature: function(feature, layer){
-                    layer.on('click', function(e) {
-                        var featureId = feature.properties.id;
-                        //tampilkan data
-                        $.ajax({
-                            url: "{{ url('/surveyor') }}/" + featureId,
-                            type: "GET",
-                            dataType: "html",
-                            success: function(html) {
-                                $("#modal-body").html(html);
-                                // $("#geojson").val(shape_for_db);
-                                // document.getElementById('entity').value = shape_for_db;
-                            }
+                    style: myStyle{{ $no }},
+                    onEachFeature: function(feature, layer){
+                        layer.on('click', function(e) {
+                            var featureId = feature.properties.id;
+                            //tampilkan data
+                            $.ajax({
+                                url: "{{ url('/surveyor') }}/" + featureId,
+                                type: "GET",
+                                dataType: "html",
+                                success: function(html) {
+                                    $("#modal-body").html(html);
+                                    // $("#geojson").val(shape_for_db);
+                                    // document.getElementById('entity').value = shape_for_db;
+                                }
+                            });
+                            $('#exampleModal').modal('show'); 
                         });
-                        $('#exampleModal').modal('show'); 
-                    });
-                }
-            }).addTo(map);
+                    }
+                }).addTo(map);
 
             @endforeach
 
 
-            // var data = [
-            //     <?php
-            //         foreach($data as $item)
-            //         {
-            //             echo $item['geojson'];
-            //             echo ",\n";
-            //         }
-            //     ?>
-            // ];
-
-            // var myStyle = {
-            //     "color": "#ff7800",
-            //     "weight": 1,
-            //     "opacity": 0.65
-            // };
-
-            // L.geoJSON(data, {
-            //     style: myStyle,
-            //     onEachFeature: function(feature, layer){
-            //         layer.on('click', function(e) {
-            //             var featureId = feature.properties.id;
-            //             //tampilkan data
-            //             $.ajax({
-            //                 url: "detail.php?id=" + featureId,
-            //                 type: "GET",
-            //                 dataType: "html",
-            //                 success: function(html) {
-            //                     $("#modal-body").html(html);
-            //                     // $("#geojson").val(shape_for_db);
-            //                     // document.getElementById('entity').value = shape_for_db;
-            //                 }
-            //             });
-            //             $('#empModal').modal('show'); 
-            //         });
-            //     }
-            // }).addTo(map);
+        
 
             
 

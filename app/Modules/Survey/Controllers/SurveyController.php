@@ -10,6 +10,7 @@ use App\Modules\Desa\Models\Desa;
 use App\Modules\JenisLahan\Models\JenisLahan;
 
 use App\Http\Controllers\Controller;
+use App\Modules\BatasAdministrasi\Models\BatasAdministrasi;
 use Illuminate\Support\Facades\Auth;
 
 class SurveyController extends Controller
@@ -40,6 +41,7 @@ class SurveyController extends Controller
 	{
 		$data['jenis_lahan'] = JenisLahan::get();
 		$data['survey'] = Survey::get();
+		$data['batas_adm'] = BatasAdministrasi::get();
 
 		$this->log($request, 'melihat halaman manajemen data '.$this->title);
 		return view('Survey::survey_surveyor', array_merge($data, ['title' => $this->title]));
