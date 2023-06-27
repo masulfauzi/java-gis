@@ -16,5 +16,6 @@ Route::controller(SurveyController::class)->middleware(['web','auth'])->name('su
 	Route::get('/surveyor', 'index_surveyor')->name('surveyor.index');
 	Route::get('/surveyor/create', 'create_surveyor')->name('surveyor.create');
 	Route::get('/surveyor/{id}', 'show_surveyor')->name('surveyor.show.index');
+	Route::get('/surveyor/{id}/delete', 'destroy_surveyor')->name('surveyor.destroy');
 	Route::post('/surveyor/store', 'store_surveyor')->name('surveyor.store');
 });

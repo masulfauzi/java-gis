@@ -17,3 +17,4 @@
         <td class="form-control">{{ $data->jenisLahan['jenis_lahan'] }}</td>
     </tr>
 </table>
+{!! button('survey.surveyor.destroy', 'Hapus', $data->id) !!}

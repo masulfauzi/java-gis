@@ -138,6 +138,7 @@
  <script type="text/javascript"
         src="https://cdn.jsdelivr.net/gh/hosuaby/Leaflet.SmoothMarkerBouncing@v3.0.3/dist/bundle.js"
         crossorigin="anonymous"></script>
+  <script src="{{ asset('assets/js/sweetalert.js') }}"></script>
 
  <script>
   // In your Javascript (external .js resource or <script> tag)
@@ -146,6 +147,22 @@ $(document).ready(function() {
 });
  </script>
 
+<script>
+  function deleteConfirm(url){
+	swal({
+		title: "Apakah Anda yakin?",
+		text: "Setelah dihapus, data tidak dapat dikembalikan.",
+		icon: "warning",
+		buttons: true,
+		dangerMode: true,
+	})
+	.then((willDelete) => {
+		if (willDelete) {
+			window.location.href = url;
+		}
+	});
+}
+</script>
   @yield('extra-js')
 
 </body>

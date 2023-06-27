@@ -47,6 +47,18 @@ class SurveyController extends Controller
 		return view('Survey::survey_surveyor', array_merge($data, ['title' => $this->title]));
 	}
 
+	public function destroy_surveyor(Request $request, $id)
+	{
+		$survey = Survey::find($id);
+		$survey->deleted_by = Auth::id();
+		$survey->save();
+		$survey->delete();
+
+		$text = 'menghapus '.$this->title;//.' '.$survey->what;
+		$this->log($request, $text, ['survey.id' => $survey->id]);
+		return back()->with('message_success', 'Survey berhasil dihapus!');
+	}
+
 	public function create(Request $request)
 	{
 		$ref_desa = Desa::all()->pluck('id_kecamatan','id');
