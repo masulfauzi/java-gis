@@ -90,7 +90,8 @@
 
             });
 
-            L.Map.addInitHook('addHandler', 'cursor', L.CursorHandler);
+            //tambah tooltip koordinat x y
+            // L.Map.addInitHook('addHandler', 'cursor', L.CursorHandler);
 
             L.DomEvent.on(document.getElementById('refreshButton'), 'click', function(){
                 // map.locate({setView: true, maxZoom: 18});
@@ -158,7 +159,7 @@
             @foreach($batas_adm as $item_batas_adm)
 
                 var batas_adm_{{ $no }} = {!! $item_batas_adm->geojson !!}
-                var layer_adm_{{ $no }} = L.geoJSON(batas_adm_{{ $no }}).addTo(map);
+                var layer_adm_{{ $no }} = L.geoJSON(batas_adm_{{ $no }}).bindTooltip("{{ $item_batas_adm->keterangan }}").addTo(map);
 
                 <?php $no++; ?>
             @endforeach
