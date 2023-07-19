@@ -193,16 +193,17 @@
             map.on('draw:created', function (e) {
                 // var type = e.layerType;
                 var layer = e.layer;
+                var type = e.layerType;
 
                 var shape = layer.toGeoJSON()
                 var shape_for_db = JSON.stringify(shape);
 
-                // console.log(shape_for_db); 
+                console.log(type); 
 
                 var modal = document.getElementById("exampleModal");
 
                 $.ajax({
-                    url: "{{ route('survey.surveyor.create') }}",
+                    url: "{{ url('/surveyor/create/') }}/" + type,
                     type: "GET",
                     dataType: "html",
                     success: function(html) {

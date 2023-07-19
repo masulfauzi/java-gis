@@ -6,6 +6,7 @@ use App\Helpers\Logger;
 use Illuminate\Http\Request;
 use App\Modules\Log\Models\Log;
 use App\Modules\JenisLahan\Models\JenisLahan;
+use App\Modules\Geometry\Models\Geometry;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -36,8 +37,11 @@ class JenisLahanController extends Controller
 
 	public function create(Request $request)
 	{
+		$ref_geometry = Geometry::all()->pluck('geometry','id');
+		$ref_geometry->prepend('-PILIH SALAH SATU-', '');
 		
 		$data['forms'] = array(
+			'id_geometry' => ['Geometry', Form::select("id_geometry", $ref_geometry, null, ["class" => "form-control select2"]) ],
 			'jenis_lahan' => ['Jenis Lahan', Form::text("jenis_lahan", old("jenis_lahan"), ["class" => "form-control","placeholder" => "", "required" => "required"]) ],
 			'warna' => ['Warna', Form::text("warna", old("warna"), ["class" => "form-control colorpicker","placeholder" => "", "required" => "required"]) ],
 			'opacity' => ['Opacity', Form::range("opacity", old("opacity"), ["class" => "form-range","min" => "0", "max" => "100", "placeholder" => "", "required" => "required"]) ],
@@ -52,14 +56,16 @@ class JenisLahanController extends Controller
 	function store(Request $request)
 	{
 		$this->validate($request, [
+			'id_geometry' => 'required',
 			'jenis_lahan' => 'required',
 			'warna' => 'required',
 			'opacity' => 'required',
-			// 'keterangan' => 'required',
+			'keterangan' => 'required',
 			
 		]);
 
 		$jenislahan = new JenisLahan();
+		$jenislahan->id_geometry = $request->input("id_geometry");
 		$jenislahan->jenis_lahan = $request->input("jenis_lahan");
 		$jenislahan->warna = $request->input("warna");
 		$jenislahan->opacity = $request->input("opacity")/100;
@@ -86,11 +92,14 @@ class JenisLahanController extends Controller
 	{
 		$data['jenislahan'] = $jenislahan;
 
+		$ref_geometry = Geometry::all()->pluck('geometry','id');
+		$ref_geometry->prepend('-PILIH SALAH SATU-', '');
 		
 		$data['forms'] = array(
+			'id_geometry' => ['Geometry', Form::select("id_geometry", $ref_geometry, $jenislahan->id_geometry, ["class" => "form-control select2"]) ],
 			'jenis_lahan' => ['Jenis Lahan', Form::text("jenis_lahan", $jenislahan->jenis_lahan, ["class" => "form-control","placeholder" => "", "required" => "required", "id" => "jenis_lahan"]) ],
-			'warna' => ['Warna', Form::text("warna", $jenislahan->warna, ["class" => "form-control","placeholder" => "", "required" => "required", "id" => "warna"]) ],
-			'opacity' => ['Opacity', Form::text("opacity", $jenislahan->opacity, ["class" => "form-control","placeholder" => "", "required" => "required", "id" => "opacity"]) ],
+			'warna' => ['Warna', Form::text("warna", $jenislahan->warna, ["class" => "form-control colorpicker","placeholder" => "", "required" => "required", "id" => "warna"]) ],
+			'opacity' => ['Opacity', Form::range("opacity", $jenislahan->opacity*100, ["class" => "form-range","min" => "0", "max" => "100","placeholder" => "", "required" => "required", "id" => "opacity"]) ],
 			'keterangan' => ['Keterangan', Form::text("keterangan", $jenislahan->keterangan, ["class" => "form-control","placeholder" => "", "id" => "keterangan"]) ],
 			
 		);
@@ -103,6 +112,7 @@ class JenisLahanController extends Controller
 	public function update(Request $request, $id)
 	{
 		$this->validate($request, [
+			'id_geometry' => 'required',
 			'jenis_lahan' => 'required',
 			'warna' => 'required',
 			'opacity' => 'required',
@@ -111,9 +121,10 @@ class JenisLahanController extends Controller
 		]);
 		
 		$jenislahan = JenisLahan::find($id);
+		$jenislahan->id_geometry = $request->input("id_geometry");
 		$jenislahan->jenis_lahan = $request->input("jenis_lahan");
 		$jenislahan->warna = $request->input("warna");
-		$jenislahan->opacity = $request->input("opacity");
+		$jenislahan->opacity = $request->input("opacity")/100;
 		$jenislahan->keterangan = $request->input("keterangan");
 		
 		$jenislahan->updated_by = Auth::id();

@@ -29,7 +29,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-9">
-                        <form action="{{ route('jenislahan.index') }}" method="get">
+                        <form action="{{ route('geometry.index') }}" method="get">
                             <div class="form-group col-md-3 has-icon-left position-relative">
                                 <input type="text" class="form-control" value="{{ request()->get('search') }}" name="search" placeholder="Search">
                                 <div class="form-control-icon"><i class="fa fa-search"></i></div>
@@ -37,7 +37,7 @@
                         </form>
                     </div>
                     <div class="col-3">  
-						{!! button('jenislahan.create', $title) !!}  
+						{!! button('geometry.create', $title) !!}  
                     </div>
                 </div>
                 @include('include.flash')
@@ -47,10 +47,6 @@
                             <tr>
                                 <th width="15">No</th>
                                 <td>Geometry</td>
-								<td>Jenis Lahan</td>
-								<td>Warna</td>
-								<td>Opacity</td>
-								<td>Keterangan</td>
 								
                                 <th width="20%">Aksi</th>
                             </tr>
@@ -60,21 +56,17 @@
                             @forelse ($data as $item)
                                 <tr>
                                     <td>{{ $no++ }}</td>
-                                    <td>{{ $item->geometry["geometry"] }}</td>
-									<td>{{ $item->jenis_lahan }}</td>
-									<td>{{ $item->warna }}</td>
-									<td>{{ $item->opacity }}</td>
-									<td>{{ $item->keterangan }}</td>
+                                    <td>{{ $item->geometry }}</td>
 									
                                     <td>
-										{!! button('jenislahan.show','', $item->id) !!}
-										{!! button('jenislahan.edit', $title, $item->id) !!}
-                                        {!! button('jenislahan.destroy', $title, $item->id) !!}
+										{!! button('geometry.show','', $item->id) !!}
+										{!! button('geometry.edit', $title, $item->id) !!}
+                                        {!! button('geometry.destroy', $title, $item->id) !!}
                                     </td>
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="7" class="text-center"><i>No data.</i></td>
+                                    <td colspan="3" class="text-center"><i>No data.</i></td>
                                 </tr>
                             @endforelse
                         </tbody>

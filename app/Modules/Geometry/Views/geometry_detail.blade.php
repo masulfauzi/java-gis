@@ -8,14 +8,14 @@
     <div class="page-title">
         <div class="row mb-2">
             <div class="col-12 col-md-6 order-md-1 order-last">
-                <a href="{{ route('jenislahan.index') }}" class="btn btn-sm icon icon-left btn-outline-secondary"><i class="fa fa-arrow-left"></i> Kembali </a>
+                <a href="{{ route('geometry.index') }}" class="btn btn-sm icon icon-left btn-outline-secondary"><i class="fa fa-arrow-left"></i> Kembali </a>
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('jenislahan.index') }}">{{ $title }}</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">{{ $jenislahan->nama }}</li>
+                        <li class="breadcrumb-item"><a href="{{ route('geometry.index') }}">{{ $title }}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{ $geometry->nama }}</li>
                     </ol>
                 </nav>
             </div>
@@ -25,17 +25,13 @@
     <section class="section">
         <div class="card">
             <h6 class="card-header">
-                Detail Data {{ $title }}: {{ $jenislahan->nama }}
+                Detail Data {{ $title }}: {{ $geometry->nama }}
             </h6>
             <div class="card-body">
                 <div class="row">
                     <div class="col-lg-10 offset-lg-2">
                         <div class="row">
-                            <div class='col-lg-2'><p>Geometry</p></div><div class='col-lg-10'><p class='fw-bold'>{{ $jenislahan->geometry->id }}</p></div>
-									<div class='col-lg-2'><p>Jenis Lahan</p></div><div class='col-lg-10'><p class='fw-bold'>{{ $jenislahan->jenis_lahan }}</p></div>
-									<div class='col-lg-2'><p>Warna</p></div><div class='col-lg-10'><p class='fw-bold'>{{ $jenislahan->warna }}</p></div>
-									<div class='col-lg-2'><p>Opacity</p></div><div class='col-lg-10'><p class='fw-bold'>{{ $jenislahan->opacity }}</p></div>
-									<div class='col-lg-2'><p>Keterangan</p></div><div class='col-lg-10'><p class='fw-bold'>{{ $jenislahan->keterangan }}</p></div>
+                            <div class='col-lg-2'><p>Geometry</p></div><div class='col-lg-10'><p class='fw-bold'>{{ $geometry->geometry }}</p></div>
 									
                         </div>
                     </div>
