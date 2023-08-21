@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Modules\Desa\Models\Desa;
 use App\Modules\JenisLahan\Models\JenisLahan;
+use App\Modules\Geometry\Models\Geometry;
 
 
 class Survey extends Model
@@ -24,6 +25,9 @@ class Survey extends Model
 	}
 public function jenisLahan(){
 		return $this->belongsTo(JenisLahan::class,"id_jenis_lahan","id");
+	}
+public function geometry(){
+		return $this->belongsTo(Geometry::class,"id_geometry","id");
 	}
 
 	public static function update_properties($id)

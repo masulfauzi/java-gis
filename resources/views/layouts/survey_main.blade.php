@@ -140,12 +140,12 @@
         crossorigin="anonymous"></script>
   <script src="{{ asset('assets/js/sweetalert.js') }}"></script>
 
- <script>
+ {{-- <script>
   // In your Javascript (external .js resource or <script> tag)
 $(document).ready(function() {
     $('.select2').select2();
 });
- </script>
+ </script> --}}
 
 <script>
   function deleteConfirm(url){

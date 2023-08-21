@@ -27,11 +27,20 @@
     </div>
     <div class="row mt-2">
         <div class="col-md-3 form-group">
+            <label for="">Luas</label>
+        </div>
+        <div class="col-md-9 form-group">
+            {!! Form::text('luas', NULL, ["class" => "form-control","id"=>"luas"]) !!}
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-md-3 form-group">
             <label for="">Keterangan</label>
         </div>
         <div class="col-md-9 form-group">
             {!! Form::textarea('keterangan', NULL, ["class" => "form-control", "rows" => "2"]) !!}
         </div>
     </div>
+    
     <button class="btn btn-primary" type="submit">Simpan</button>
 </form>

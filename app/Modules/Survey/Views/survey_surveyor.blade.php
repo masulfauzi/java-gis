@@ -36,7 +36,7 @@
     </section><!-- End Hero -->
 
       <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true" style="overflow:hidden;">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -51,12 +51,18 @@
         </div>
       </div>
     </div>
+    
   </div>
+
+  
 @endsection
 
 @section('extra-js')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/0.0.124/turf.min.js" integrity="sha512-jpnZ8xGKbS7L9S6d5fk/zDVgF6OoVKLMoEliLxf24BRX+orWhxqJuUcoM+vGmOaozS9dD9ABjQZKAgjjcwTndA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         $(document).ready(function(){
+
+            $(".select").select2({dropdownParent: $("#exampleModal")});
 
             L.CursorHandler = L.Handler.extend({
 
@@ -94,7 +100,7 @@
             // L.Map.addInitHook('addHandler', 'cursor', L.CursorHandler);
 
             L.DomEvent.on(document.getElementById('refreshButton'), 'click', function(){
-                // map.locate({setView: true, maxZoom: 18});
+                map.locate({setView: true, maxZoom: 20});
 
                 navigator.geolocation.getCurrentPosition(position => {
                         console.log(position);
@@ -190,6 +196,9 @@
             // var myLayer = L.geoJSON().addTo(map);
             // myLayer.addData(geojsonFeature);
 
+
+            // var polygon = new L.featureGroup();
+
             map.on('draw:created', function (e) {
                 // var type = e.layerType;
                 var layer = e.layer;
@@ -198,7 +207,25 @@
                 var shape = layer.toGeoJSON()
                 var shape_for_db = JSON.stringify(shape);
 
-                console.log(type); 
+                if (type === 'polygon') {
+                    var seeArea = L.GeometryUtil.geodesicArea(layer.getLatLngs()[0]);
+                    // console.log(seeArea);   
+                }
+
+                if (type === 'polyline') {
+                    var coords = layer.getLatLngs();
+                    var seeArea = 0;
+                    for (var i = 0; i < coords.length - 1; i++) {
+                        seeArea += coords[i].distanceTo(coords[i + 1]);
+                    }
+                    // console.log(seeArea);
+                }
+                
+                // // console.log(layer.getLatLngs());  
+                // polygon.addLayer(layer);
+                // var seeArea = L.GeometryUtil.geodesicArea(layer.getLatLngs()[0]);
+                // console.log(seeArea);              
+                // // console.log(type); 
 
                 var modal = document.getElementById("exampleModal");
 
@@ -210,6 +237,10 @@
                         $("#modal-body").html(html);
                         // $("#geojson").val(shape_for_db);
                         document.getElementById('koordinat').value = shape_for_db;
+                        if(type != 'marker')
+                        {
+                            document.getElementById('luas').value = seeArea;
+                        }
                         $('#exampleModal').modal('show'); 
                     }
                 });

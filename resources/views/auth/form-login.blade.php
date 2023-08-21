@@ -782,7 +782,7 @@
 
       <div class="me-md-auto text-center text-md-start">
         <div class="copyright">
-          &copy; Copyright <strong><span>Lumia</span></strong>. All Rights Reserved
+          &copy; Copyright <strong><span>Kementerian Lingkungan Hidup & Kehutanan</span></strong>
         </div>
         <div class="credits">
           <!-- All the links in the footer should remain intact. -->

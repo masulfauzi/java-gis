@@ -48,6 +48,7 @@
                                 <th width="15">No</th>
                                 <td>Desa</td>
 								<td>Jenis Lahan</td>
+								<td>Geometry</td>
 								<td>Nama</td>
 								<td>Luas</td>
 								<td>Koordinat</td>
@@ -63,6 +64,7 @@
                                     <td>{{ $no++ }}</td>
                                     <td>{{ $item->id_desa }}</td>
 									<td>{{ $item->id_jenis_lahan }}</td>
+									<td>{{ $item->id_geometry }}</td>
 									<td>{{ $item->nama }}</td>
 									<td>{{ $item->luas }}</td>
 									<td>{{ $item->koordinat }}</td>
@@ -76,7 +78,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="8" class="text-center"><i>No data.</i></td>
+                                    <td colspan="9" class="text-center"><i>No data.</i></td>
                                 </tr>
                             @endforelse
                         </tbody>

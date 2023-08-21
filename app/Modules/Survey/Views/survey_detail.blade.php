@@ -33,6 +33,7 @@
                         <div class="row">
                             <div class='col-lg-2'><p>Desa</p></div><div class='col-lg-10'><p class='fw-bold'>{{ $survey->desa->id }}</p></div>
 									<div class='col-lg-2'><p>Jenis Lahan</p></div><div class='col-lg-10'><p class='fw-bold'>{{ $survey->jenisLahan->id }}</p></div>
+									<div class='col-lg-2'><p>Geometry</p></div><div class='col-lg-10'><p class='fw-bold'>{{ $survey->geometry->id }}</p></div>
 									<div class='col-lg-2'><p>Nama</p></div><div class='col-lg-10'><p class='fw-bold'>{{ $survey->nama }}</p></div>
 									<div class='col-lg-2'><p>Luas</p></div><div class='col-lg-10'><p class='fw-bold'>{{ $survey->luas }}</p></div>
 									<div class='col-lg-2'><p>Koordinat</p></div><div class='col-lg-10'><p class='fw-bold'>{{ $survey->koordinat }}</p></div>

@@ -43,7 +43,7 @@
 
       <div class="logo me-auto">
         <h1><a href="index.html">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/0/06/Logo_of_the_Ministry_of_Environmental_Affairs_and_Forestry_of_the_Republic_of_Indonesia.svg" alt="">    
+            <img src="https://www.menlhk.go.id/assets/front/images/logo.png" alt="">    
         </a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
@@ -94,7 +94,7 @@
       <h1>KEMENTERIAN LINGKUNGAN HIDUP & KEHUTANAN REPUBLIK INDONESIA</h1>
       <h2>BALAI PERHUTANAN SOSIAL & KEMITRAAN LINGKUNGAN<br>WILAYAH JAWA</h2>
       <H2>JAVA GIS</H2>
-      <a href="{{ route('login') }}" class="btn-get-started scrollto">Get Started</a>
+      <a href="{{ route('login') }}" class="btn-get-started scrollto">Masuk</a>
     </div>
   </section><!-- End Hero -->
 
@@ -582,7 +582,7 @@
     </section><!-- End Testimonials Section --> --}}
 
     <!-- ======= Team Section ======= -->
-    <section id="team" class="team">
+    {{-- <section id="team" class="team">
       <div class="container">
 
         <div class="section-title">
@@ -645,7 +645,7 @@
         </div>
 
       </div>
-    </section><!-- End Team Section -->
+    </section><!-- End Team Section --> --}}
 
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact section-bg">
@@ -775,7 +775,7 @@
 
       <div class="me-md-auto text-center text-md-start">
         <div class="copyright">
-          &copy; Copyright <strong><span>Lumia</span></strong>. All Rights Reserved
+          &copy; Copyright <strong><span>Kementerian Lingkungan Hidup & Kehutanan</span></strong>
         </div>
         <div class="credits">
           <!-- All the links in the footer should remain intact. -->
